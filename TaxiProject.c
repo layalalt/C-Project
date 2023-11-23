@@ -19,7 +19,7 @@ typedef struct Taxi Taxi;
 Taxi* list; //list is like the head
 void addTripCar();
 void printList();
-void setTripCar();
+void setTripCar(char*, float*);
 
 
 int main() 
@@ -95,9 +95,9 @@ void setTripCar(char* category, float* rate)
  {
  	if(p->state=='A')
  	{
- 		if((p->category==*category)&&(p->rate==*rate))
+ 		if((strcmp(p->category, category) == 0)&&(p->rate==*rate))
  		{
- 			p->state='R'
+ 			p->state='R';
  			break;
  		}
  		p=p->next;
