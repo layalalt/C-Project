@@ -60,13 +60,19 @@ void addTripCar()
     
     Taxi *curr, *prev;
     list = (Taxi*)malloc(sizeof(Taxi));
-    fscanf(file, "%d\t\t%s\t\t%s\t\t%s\t\t%s\t\t%f\t\t%f", &(list->id), list->driver, list->category, list->plate, list->color, &(list->rate), &(list->minCharge));
+    if(list)
+       fscanf(file, "%d\t\t%s\t\t%s\t\t%s\t\t%s\t\t%f\t\t%f", &(list->id), list->driver, list->category, list->plate, list->color, &(list->rate), &(list->minCharge));
+    else
+       return;
     list->state = 'A';
     prev = list;
     for(i=1; i<count; i++)
     {
       curr = (Taxi*)malloc(sizeof(Taxi));
-      fscanf(file, "%d\t\t%s\t\t%s\t\t%s\t\t%s\t\t%f\t\t%f", &(curr->id), curr->driver, curr->category, curr->plate, curr->color, &(curr->rate), &(curr->minCharge));
+      if(curr)
+         fscanf(file, "%d\t\t%s\t\t%s\t\t%s\t\t%s\t\t%f\t\t%f", &(curr->id), curr->driver, curr->category, curr->plate, curr->color, &(curr->rate), &(curr->minCharge));
+      else
+         return;
       curr->state = 'A';
       prev->next = curr;
       prev = curr;
@@ -88,24 +94,24 @@ void printList()
     curr = curr->next;
   }
 }
+
 void setTripCar(char* category, float* rate)
 {
- Taxi *p= list;
- while(p!=NULL)
- {
- 	if(p->state=='A')
- 	{
- 		if((strcmp(p->category, category) == 0)&&(p->rate==*rate))
+  Taxi *p = list;
+  while(p != NULL)
+  {
+ 	 if(p->state == 'A')
+ 	 {
+ 		if((strcmp(p->category, category) == 0) && (p->rate == *rate))
  		{
  			p->state='R';
  			break;
  		}
- 		p=p->next;
+ 		p = p->next;
     }
- }
-
- 
+  }
 }
+  
 
 
 
