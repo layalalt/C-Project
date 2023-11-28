@@ -20,7 +20,7 @@ Taxi* list; //list is like the head
 void addTripCar();
 void printList();
 void setTripCar(char*, float*);
-
+void writeCarsInRide(char*);
 
 int main() 
 {
@@ -34,6 +34,7 @@ int main()
      addTripCar();
     //rest of the code
     printList();
+    writeCarsInRide("Taxies.txt");
    }
     
     
