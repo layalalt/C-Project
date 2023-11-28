@@ -111,6 +111,35 @@ void setTripCar(char* category, float* rate)
     }
   }
 }
+
+void writeCarsInRide(char* fileName) {
+
+   if(list ==NULL)   {
+        printf("The list is empty\n");
+        return;
+    }
+    
+    FILE* file = fopen(fileName, "a");
+    if (file == NULL) {
+        perror("Error opening file");
+        return;
+    }
+
+    fprintf(file, "\n--------------------------------------------------------------------------------------------------------------\nThe Cars in Ride\n");
+    fprintf(file, "id\t\tdriver\t\tcategory\t\tplate\t\trate\t\tminCharge\t\tstate\n");
+
+    struct Taxi* current = list;
+    while (current != NULL) {
+        if (current->state == 'R') {
+            fprintf(file, "%d\t\t%s\t\t%s\t\t%s\t\t%.1f\t\t%.2f\t\t%c\n", current->id, current->driver, current->category,
+                    current->plate, current->rate, current->minCharge, current->state);
+        }
+        current = current->next;
+    }
+
+    fclose(file);
+}
+
   
 
 
