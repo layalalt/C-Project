@@ -97,9 +97,10 @@ void addTripCar()
 void printList()
 { 
   Taxi* curr = list;
+  //printf("id\t\tdriver\t\tcategory\t\tplate\t\tcolor\t\trate\t\tminCharge\t\tstate\n");
   while(curr != NULL)
   {
-    printf("%d\t\t%s\t\t%s\t\t%s\t\t%s\t\t%f\t\t%f\t\t%c\n", curr->id, curr->driver, curr->category, curr->plate, curr->color, curr->rate, curr->minCharge, curr->state); 
+    printf("%d\t\t%s\t\t%s\t\t%s\t\t%.1f\t\t%.2f\t\t%c\n", curr->id, curr->driver, curr->category, curr->plate, curr->rate, curr->minCharge, curr->state); 
     curr = curr->next;
   }
 }
